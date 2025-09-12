@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang  <!-- Application modules - corrected paths -->
+  <script src="js/services.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Escáner de Archivos - Malware Scanner</title>
+  <meta name="description" content="Analiza tus archivos con ClamAV en segundos. Escáner de malware seguro y rápido."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="bg"></div>
+  
+  <main class="shell">
+    <!-- React app will be mounted here -->
+    <div id="app"></div>
+  </main>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  
+  <!-- Application modules - corrected paths -->
+  <script src="jsservices.js"></script>
+  <script src="components.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Initialize the app -->
+  <script>
+    // Initialize React app
+    const { createRoot } = ReactDOM;
+    const root = createRoot(document.getElementById('app'));
+    root.render(React.createElement(MalwareScannerApp));
+
+    // Service Worker registration for better caching (optional)
+    if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
+    }
+
+    // Global error handling
+    window.addEventListener('unhandledrejection', (event) => {
+      console.error('Unhandled promise rejection:', event.reason);
+    });
+
+    window.addEventListener('error', (event) => {
+      console.error('Global error:', event.error);
+    });
+  </script>
+</body>
+</html>
