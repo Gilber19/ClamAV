@@ -123,8 +123,9 @@ function MalwareScannerApp() {
 
   // Handle file upload
   const handleFileUpload = React.useCallback(async (file) => {
+    console.log('[handleFileUpload] Archivo recibido:', file);
     const validation = FileValidator.validateFile(file);
-    
+    console.log('[handleFileUpload] Validación:', validation);
     if (!validation.isValid) {
       showToast(validation.errors[0]);
       return;
@@ -138,13 +139,16 @@ function MalwareScannerApp() {
 
       const response = await apiService.uploadFile(file, (progressPercent) => {
         setProgress(progressPercent);
+        console.log('[handleFileUpload] Progreso de subida:', progressPercent);
       });
 
+      console.log('[handleFileUpload] Respuesta de subida:', response);
       setChip({ text: 'Archivo subido', type: 'success' });
       setStatusText('Iniciando escaneo...');
       
       // Handle both fileId and id response formats
       const fileId = response.fileId || response.id;
+      console.log('[handleFileUpload] fileId:', fileId);
       if (!fileId) {
         throw new Error('No se recibió ID de archivo válido');
       }
@@ -167,34 +171,38 @@ function MalwareScannerApp() {
 
   // Handle scan start
   const handleScanStart = React.useCallback(async (fileId) => {
+    console.log('[handleScanStart] fileId:', fileId);
     try {
       setAppState(APP_STATES.SCANNING);
       setChip({ text: 'Iniciando...', type: 'warn' });
       setStatusText('Iniciando escaneo...');
 
       const scanResponse = await apiService.startScan(fileId);
-      
+      console.log('[handleScanStart] Respuesta de startScan:', scanResponse);
       // Handle both scanId and id response formats
       const scanId = scanResponse.scanId || scanResponse.id;
+      console.log('[handleScanStart] scanId:', scanId);
       if (!scanId) {
         throw new Error('No se recibió ID de escaneo válido');
       }
-      
       // Start polling for scan status
       startPolling(
         scanId,
         // onStatusUpdate
         (status) => {
+          console.log('[startPolling] Estado del escaneo:', status);
           const statusInfo = SCAN_STATUS_MAP[status] || { text: status, type: 'neutral' };
           setChip(statusInfo);
           setStatusText(`Estado: ${status}...`);
         },
         // onComplete
         async (completedScanId) => {
+          console.log('[startPolling] Escaneo completado, scanId:', completedScanId);
           await handleScanComplete(completedScanId);
         },
         // onError
         (error) => {
+          console.error('[startPolling] Error durante el escaneo:', error);
           setAppState(APP_STATES.ERROR);
           setChip({ text: 'Error de escaneo', type: 'danger' });
           setStatusText('Error durante el escaneo');
@@ -219,9 +227,10 @@ function MalwareScannerApp() {
 
   // Handle scan completion
   const handleScanComplete = React.useCallback(async (scanId) => {
+    console.log('[handleScanComplete] scanId:', scanId);
     try {
       const scanResult = await apiService.getScanResult(scanId);
-      
+      console.log('[handleScanComplete] Resultado del escaneo:', scanResult);
       setAppState(APP_STATES.COMPLETED);
       setResult(scanResult);
       

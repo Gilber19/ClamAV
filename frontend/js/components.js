@@ -59,6 +59,8 @@ function DropZone({
     if (file && onFileSelect) {
       onFileSelect(file);
     }
+    // Limpiar el valor para permitir seleccionar el mismo archivo varias veces
+    e.target.value = '';
   };
 
   return React.createElement(
@@ -120,6 +122,7 @@ function DropZone({
           disabled: disabled,
           onClick: (e) => {
             e.preventDefault();
+            e.stopPropagation();
             handleClick();
           },
         },

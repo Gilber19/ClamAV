@@ -1,0 +1,13 @@
+{
+  "liveServer.settings.root": "/frontend",
+  "liveServer.settings.ignoreFiles": [
+    "**/malware-scanner-lab/backend/uploads/**",
+    "**/malware-scanner-lab/backend/uploads/*",
+    "**/uploads/**",
+    "**/uploads/*"
+  ],
+  "files.watcherExclude": {
+    "**/malware-scanner-lab/backend/uploads/**": true
+  },
+  "liveServer.settings.port": 5501
+}
