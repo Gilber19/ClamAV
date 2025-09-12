@@ -2,7 +2,7 @@
 
 ## 📋 Resumen de la Refactorización
 
-Esta refactorización mejora significativamente la arquitectura, organización y mantenibilidad del proyecto malware scanner, implementando mejores prácticas de desarrollo tanto en el backend (Node.js/Express) como en el frontend (React).
+Esta refactorización mejora significativamente la arquitectura, organización y mantenibilidad del proyecto malware scanner, implementando mejores prácticas de desarrollo tanto en el backend (Node.js/Express) como en el frontend.
 
 ## 🚀 Mejoras Implementadas
 
@@ -277,3 +277,4 @@ La refactorización mejora significativamente la mantenibilidad del código:
 **Versión**: 2.0.0  
 **Fecha**: Septiembre 2025  
 **Compatibilidad**: Backward compatible con v1.0
+
