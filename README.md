@@ -1,7 +1,7 @@
 # Integrantes
 
 - Diarte Salas Gilberto
-- Haro Calvo Fernando Horacio
+- Haro Calvo Fernando
 - Solano Meza Angel Daniel
 - Sandez Islas Danna Guadalupe
 - Vazquez Guzman Jorge Antonio
