@@ -1,21 +1,48 @@
-### Asegurate de tener Docker iniciado
+#  Guía de Inicio Rápido: Malware Scanner Lab
 
-# Muevete a la carpeta /malware-scanner-lab/backend
 
-# Utiliza el comando 'npm i'
+## 1. Configuración del Backend
 
-# Ejecuta docker con el siguiente comando
+Asegúrate de tener **Docker** iniciado antes de comenzar.
 
-# docker run -d --name clamav -p 3310:3310 clamav/clamav:latest
+1.  Navega al directorio del backend:
+    ```bash
+    cd /malware-scanner-lab/backend
+    ```
 
-# Por ultimo compilamos el backend con 'npm run dev'
+2.  Instala las dependencias del proyecto:
+    ```bash
+    npm i
+    ```
 
-# Abrimos otra terminal y accedemos al directorio 'frontend'
+3.  Ejecuta el contenedor de Docker para ClamAV. Esto iniciará el servicio de escaneo de malware.
+    ```bash
+    docker run -d --name clamav -p 3310:3310 clamav/clamav:latest
+    ```
 
-# Abrimos el servidor para el index con el siguiente comando
+4.  Compila y ejecuta el backend en modo de desarrollo:
+    ```bash
+    npm run dev
+    ```
 
-# python -m http.server 8081
+---
 
-# Para acceder al sistema debemos ingresar a la siguiente url
+## 2. Configuración del Frontend
 
-# http://localhost:8081/
+1.  Abre una nueva terminal y accede al directorio del frontend:
+    ```bash
+    cd /malware-scanner-lab/frontend
+    ```
+
+2.  Inicia un servidor web local para el `index.html` en el puerto `8081`. (Requiere Python)
+    ```bash
+    python -m http.server 8081
+    ```
+
+---
+
+## 3. Acceso al Sistema
+
+Una vez que ambos servidores estén en marcha, puedes acceder a la aplicación desde tu navegador visitando la siguiente URL:
+
+[http://localhost:8081/](http://localhost:8081/)
