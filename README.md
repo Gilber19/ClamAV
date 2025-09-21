@@ -1,9 +1,9 @@
-# Integrantes
+# Integrantes del equipo
 
 - Diarte Salas Gilberto
 - Haro Calvo Fernando
-- Solano Meza Angel Daniel
 - Sandez Islas Danna Guadalupe
+- Solano Meza Angel Daniel
 - Vazquez Guzman Jorge Antonio
 
 
